@@ -1,6 +1,7 @@
 package net.mnight.testing;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -24,9 +25,9 @@ public class Testing
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public Testing(FMLJavaModLoadingContext context)
-    {
+    public Testing(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
+
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -49,8 +50,7 @@ public class Testing
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
 
     }
 
