@@ -1,6 +1,7 @@
 package net.mnight.testing;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -32,7 +33,7 @@ public class LogPileBlock extends Block {
                                  InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide && player.isShiftKeyDown()) {
             ItemStack held = player.getItemInHand(hand);
-            if (held.getItem() == Items.OAK_LOG) {
+            if (held.is(ItemTags.LOGS)) {
                 int current = state.getValue(AMOUNT);
                 if (current < 8) {
                     level.setBlock(pos, state.setValue(AMOUNT, current + 1), 3);
