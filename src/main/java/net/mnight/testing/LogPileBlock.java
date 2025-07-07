@@ -1,10 +1,13 @@
 package net.mnight.testing;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -16,6 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class LogPileBlock extends Block {
     public static final IntegerProperty AMOUNT = IntegerProperty.create("amount", 1,8);
+    public static final TagKey<Item> LOG_BLACKLIST = ItemTags.create(new ResourceLocation("testing","charcoal_blacklist"));
 
 
     public LogPileBlock(Properties properties) {
@@ -33,7 +37,7 @@ public class LogPileBlock extends Block {
                                  InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide && player.isShiftKeyDown()) {
             ItemStack held = player.getItemInHand(hand);
-            if (held.is(ItemTags.LOGS)) {
+            if (held.is(ItemTags.LOGS) && held.is(LOG_BLACKLIST)) {
                 int current = state.getValue(AMOUNT);
                 if (current < 8) {
                     level.setBlock(pos, state.setValue(AMOUNT, current + 1), 3);
