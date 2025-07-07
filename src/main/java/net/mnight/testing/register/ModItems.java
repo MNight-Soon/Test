@@ -12,8 +12,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Testing.MOD_ID);
 
-    public static final RegistryObject<Item> LOG_PILE_ITEM = ITEMS.register("log_pile",
-            () -> new BlockItem(ModBlock.LOG_PILE.get(), new Item.Properties()));
+    /*public static final RegistryObject<Item> LOG_PILE_ITEM = ITEMS.register("log_pile",
+            () -> new BlockItem(ModBlock.LOG_PILE.get(), new Item.Properties())); */
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
